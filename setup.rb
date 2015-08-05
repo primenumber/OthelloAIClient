@@ -1,3 +1,4 @@
+require 'yaml'
 require_relative 'simple_chat/simple_chat'
 
 $data = {}
@@ -5,7 +6,9 @@ name = nil
 server_uri = nil
 
 def save
-  File.open('config.yml').write($data.to_yaml)
+  File.open('config.yml','w') do |file|
+    file.write($data.to_yaml)
+  end
 end
 
 while name == nil || name == "" do
